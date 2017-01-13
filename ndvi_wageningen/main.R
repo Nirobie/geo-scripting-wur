@@ -9,6 +9,7 @@ source('R/correct_cloudcover.R')
 source('R/calc_NDVI.R')
 source('R/compare_NDVI.R')
 
+## make sure both .tar.gz files are in the folder data
 ## unpack data in folder data
 untar("data/LC81970242014109-SC20141230042441.tar.gz", exdir = "data")
 untar("data/LT51980241990098-SC20150107121947.tar.gz", exdir = "data")
