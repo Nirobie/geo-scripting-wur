@@ -53,13 +53,25 @@ plot(predLM)
 plot(alldata$VCF)
 
 ## Calculated RMSE
-
-rmse <-sqrt(mean((predLM-alldata$VCF)^2,na.rm=TRUE))
-sq_diff_raster <- predLM-alldata$VCF
-
 sq_diff <- as.data.frame(predLM-alldata$VCF)
-rmse3 <- sqrt(mean(sq_diff$layer^2, na.rm = TRUE))
+rmse <- sqrt(mean(sq_diff$layer^2, na.rm = TRUE))
 
-rmse2 <-sqrt(cellStats((predLM-alldata$VCF)^2, "mean", na.rm = T))
+## Alternative calculation using cellStats:
+## rmse2 <-sqrt(cellStats((predLM-alldata$VCF)^2, "mean", na.rm = T))
 
-plot(sq_diff_raster)
+## Comparing predicted and actual tree cover
+# Rasterize polygon classes
+ndvi <- overlay(GewataB4, GewataB3, fun=function(x,y){(x-y)/(x+y)})
+gewata <- brick(GewataB2, GewataB3, GewataB4)
+gewata <- calc(gewata, fun=function(x) x / 10000)
+covs <- addLayer(gewata, ndvi, vcfGewata)
+names(covs) <- c("band2", "band3", "band4", "NDVI", "VCF")
+load("data/trainingPoly.rda")
+trainingPoly@data$Code <- as.numeric(trainingPoly@data$Class)
+classes <- rasterize(trainingPoly, ndvi, field='Code')
+
+## Calculate difference
+rmse_map <- (predLM-alldata$VCF)^2
+plot(rmse_map)
+zonal_mean <- zonal(rmse_map, classes, fun='mean', na.rm = T)
+polygon_rmse <- cbind(class = c("cropland", "forest", "wetland"), rmse = sqrt(zonal_mean[,2]))
