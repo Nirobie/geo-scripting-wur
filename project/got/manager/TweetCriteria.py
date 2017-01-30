@@ -6,7 +6,11 @@ class TweetCriteria:
 	def setUsername(self, username):
 		self.username = username
 		return self
-		
+  
+	def setplaceid(self, placeid):
+		self.placeid = placeid
+		return self	
+  
 	def setSince(self, since):
 		self.since = since
 		return self

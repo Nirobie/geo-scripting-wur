@@ -78,15 +78,18 @@ class TweetManager:
 	
 	@staticmethod
 	def getJsonReponse(tweetCriteria, refreshCursor, cookieJar):
-		url = "https://twitter.com/i/search/timeline?f=tweets&q=place:5a110d312052166f%s&src=typd&max_position=%s"
+		url = "https://twitter.com/i/search/timeline?f=tweets&q=%s&src=typd&max_position=%s"
 		
 		urlGetData = ''
 		if hasattr(tweetCriteria, 'username'):
-			urlGetData += ' from:' + tweetCriteria.username
-			
+			urlGetData += ' from:' + tweetCriteria.username		
+  
+		if hasattr(tweetCriteria, 'placeid'):
+			urlGetData += ' place:' + tweetCriteria.placeid
+   
 		if hasattr(tweetCriteria, 'since'):
 			urlGetData += ' since:' + tweetCriteria.since
-			
+				
 		if hasattr(tweetCriteria, 'until'):
 			urlGetData += ' until:' + tweetCriteria.until
 			

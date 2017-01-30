@@ -15,7 +15,8 @@ def main(argv):
        until: The upper bound date (yyyy-mm-aa)
  querysearch: A query text to be matched
    maxtweets: The maximum number of tweets to retrieve
-
+     placeid: The twitter location ID of tweets to retrieve
+		
  \nExamples:
  # Example 1 - Get tweets by username [barackobama]
  python Exporter.py --username "barackobama" --maxtweets 1\n
@@ -31,14 +32,17 @@ def main(argv):
 		return
  
 	try:
-		opts, args = getopt.getopt(argv, "", ("username=", "since=", "until=", "querysearch=", "toptweets", "maxtweets="))
+		opts, args = getopt.getopt(argv, "", ("username=", "placeid=", "since=", "until=", "querysearch=", "toptweets", "maxtweets="))
 		
 		tweetCriteria = got.manager.TweetCriteria()
 		
 		for opt,arg in opts:
 			if opt == '--username':
 				tweetCriteria.username = arg
-				
+             
+			elif opt == '--placeid':
+				tweetCriteria.placeid = arg
+    
 			elif opt == '--since':
 				tweetCriteria.since = arg
 				
@@ -54,16 +58,15 @@ def main(argv):
 			elif opt == '--maxtweets':
 				tweetCriteria.maxTweets = int(arg)
 				
-		
 		outputFile = codecs.open("output_got.csv", "w+", "utf-8")
 		
-		outputFile.write('username;date;retweets;favorites;text;geo;mentions;hashtags;id;permalink')
+		outputFile.write('place;username;date;retweets;favorites;text;geo;mentions;hashtags;id;permalink')
 		
 		print 'Searching...\n'
 		
 		def receiveBuffer(tweets):
 			for t in tweets:
-				outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
+				outputFile.write(('\n%s;%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (tweetCriteria.placeid, t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
 			outputFile.flush();
 			print 'More %d saved on file...\n' % len(tweets)
 		
