@@ -1,0 +1,191 @@
+{
+  "axes": [
+    {
+      "scale": "x",
+      "title": "date",
+      "type": "x"
+    },
+    {
+      "scale": "y",
+      "title": "normalized weighted composite score",
+      "type": "y"
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1477868400000,
+          "val": -0.9871000000000001
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1477868400000,
+          "val": -5.5211000000000015
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1477954800000,
+          "val": 0.41469999999999974
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1477954800000,
+          "val": -2.1934000000000013
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478041200000,
+          "val": -2.4909999999999997
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478041200000,
+          "val": 2.6042000000000005
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478127600000,
+          "val": -0.10510000000000003
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478127600000,
+          "val": -1.2030999999999998
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478214000000,
+          "val": -0.10100000000000015
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478214000000,
+          "val": -0.3292999999999999
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478300400000,
+          "val": -1.8687
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478300400000,
+          "val": -3.6257999999999995
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478386800000,
+          "val": -3.4742
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478386800000,
+          "val": 1.6591999999999991
+        },
+        {
+          "col": "@realDonaldTrump",
+          "idx": 1478473200000,
+          "val": -1.2039
+        },
+        {
+          "col": "@HillaryClinton",
+          "idx": 1478473200000,
+          "val": 0.0
+        }
+      ]
+    }
+  ],
+  "height": 200,
+  "legends": [
+    {
+      "fill": "color",
+      "offset": 0,
+      "properties": {},
+      "title": "Queries"
+    }
+  ],
+  "marks": [
+    {
+      "from": {
+        "data": "table",
+        "transform": [
+          {
+            "keys": [
+              "data.col"
+            ],
+            "type": "facet"
+          }
+        ]
+      },
+      "marks": [
+        {
+          "properties": {
+            "enter": {
+              "stroke": {
+                "field": "data.col",
+                "scale": "color"
+              },
+              "strokeWidth": {
+                "value": 2
+              },
+              "x": {
+                "field": "data.idx",
+                "scale": "x"
+              },
+              "y": {
+                "field": "data.val",
+                "scale": "y"
+              }
+            }
+          },
+          "type": "line"
+        }
+      ],
+      "type": "group"
+    }
+  ],
+  "padding": "auto",
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "x",
+      "range": "width",
+      "type": "time"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.val"
+      },
+      "name": "y",
+      "nice": true,
+      "range": "height"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.col"
+      },
+      "name": "color",
+      "range": [
+        "#e41a1c",
+        "#377eb8",
+        "#4daf4a",
+        "#984ea3",
+        "#ff7f00",
+        "#ffff33",
+        "#a65628",
+        "#f781bf",
+        "#999999"
+      ],
+      "type": "ordinal"
+    }
+  ],
+  "width": 400
+}
