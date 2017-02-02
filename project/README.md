@@ -1,8 +1,7 @@
 # US 2016 Presidential Election on Twitter
 Project for Wageningen University Geoscripting course. February 2017.
 
-Alejandro Salazar Romero
-Bob Souwer
+Alejandro Salazar Romero, Bob Souwer
 
 ## Details
 The project aims to compare sentiment of tweets about the US 2016 presidential candidates before and after the election.
