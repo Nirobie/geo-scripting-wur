@@ -13,11 +13,11 @@ def places_by_state(states, APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET
         city_coord = pd.read_csv('data/coordinates.csv')
         xs = city_coord.loc[city_coord['State']==state].iloc[:11,3]
         ys = city_coord.loc[city_coord['State']==state].iloc[:11,4]
-        # Loops over pairs of coordinates to get up to ten of the most
+        # Loops over pairs of coordinates to get up to seven of the most
         # populated cities in the state contained in the cities file
         i=0
         while i < len(xs.index):
-            if i < 10:
+            if i < 7:
                 x = xs.iloc[i,]
                 y = ys.iloc[i,]
                 #Calls get_city_id using the city's coordinates

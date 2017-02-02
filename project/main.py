@@ -5,10 +5,10 @@ from analyze_sentiment import *
 from map_results import *
 
 ## Twitter API codes
-APP_KEY = ""
-APP_SECRET = ""
-OAUTH_TOKEN = ""
-OAUTH_TOKEN_SECRET = ""
+APP_KEY = "9jlDDVPYsigPe8Ao9UbnqjQ7Q"
+APP_SECRET = "jVHAOFrKHfpBOaJzH2K0F0ZRgB3bz5rVdlqoGQAup5tXaaspGT"
+OAUTH_TOKEN = "102152165-Sdv2opvPufyotWasY7U2C5G1ofxrckFvDtKKvTpx"
+OAUTH_TOKEN_SECRET = "FoBl3PW21BZoUeYi4WDbcUHuMC4YTAL5ZOvctMVB3eAsl"
 
 ## States of interest
 states = ['Texas','California']
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     
     
     # Get the list of placeIDs of cities in Texas and California
-    places_by_state(states, APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+    #places_by_state(states, APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
     
     # Scrape tweets in the cities in Texas and California that contain @HillaryClinton and
     # @realDonaldTrump, before and after US presidential election
