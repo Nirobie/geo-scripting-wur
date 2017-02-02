@@ -39,6 +39,7 @@ def transformCities(places):
             ## code are in the shapefile feature name, updating the
             ## city's name to csv file format.
             if city in atr['NAME10'] and state in atr['NAME10']:
+                print 'Storing ' + city_name + ' in GeoJSON file'                
                 atr['NAME10'] = city_name               
                 buffer.append(dict(type="Feature", 
                                    geometry=geom, properties=atr)) 

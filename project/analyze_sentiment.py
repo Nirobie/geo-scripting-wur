@@ -48,5 +48,6 @@ def sentiment(cities, time):
         df = df.set_index(pd.to_datetime(df['date'], format='%Y-%m-%d %H:%M'))
         df = df.drop(['date'], axis=1)
         # Store the results in dictionary city_results under placeID key
+        print 'Saving ' + placeid + ' results'
         city_results[placeid] = df.resample('D').sum()
     return city_results
